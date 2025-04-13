@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/bigkahuna/cpp_dev/build",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/handlers    -std=gnu++2a -o CMakeFiles/rest_api.dir/main.cpp.o -c /home/bigkahuna/cpp_dev/main.cpp",
+  "file": "/home/bigkahuna/cpp_dev/main.cpp"
+},
+{
+  "directory": "/home/bigkahuna/cpp_dev/build",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/handlers    -std=gnu++2a -o CMakeFiles/rest_api.dir/handlers/user.cpp.o -c /home/bigkahuna/cpp_dev/handlers/user.cpp",
+  "file": "/home/bigkahuna/cpp_dev/handlers/user.cpp"
+}
+]

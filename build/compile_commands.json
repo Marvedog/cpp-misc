@@ -1,12 +1,17 @@
 [
 {
   "directory": "/home/bigkahuna/cpp_dev/build",
-  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/handlers    -std=gnu++2a -o CMakeFiles/rest_api.dir/main.cpp.o -c /home/bigkahuna/cpp_dev/main.cpp",
-  "file": "/home/bigkahuna/cpp_dev/main.cpp"
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/home/bigkahuna/cpp_dev/include -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/routes    -std=gnu++2a -o CMakeFiles/rest_api.dir/src/main.cpp.o -c /home/bigkahuna/cpp_dev/src/main.cpp",
+  "file": "/home/bigkahuna/cpp_dev/src/main.cpp"
 },
 {
   "directory": "/home/bigkahuna/cpp_dev/build",
-  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/handlers    -std=gnu++2a -o CMakeFiles/rest_api.dir/handlers/user.cpp.o -c /home/bigkahuna/cpp_dev/handlers/user.cpp",
-  "file": "/home/bigkahuna/cpp_dev/handlers/user.cpp"
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/home/bigkahuna/cpp_dev/include -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/routes    -std=gnu++2a -o CMakeFiles/rest_api.dir/src/config.cpp.o -c /home/bigkahuna/cpp_dev/src/config.cpp",
+  "file": "/home/bigkahuna/cpp_dev/src/config.cpp"
+},
+{
+  "directory": "/home/bigkahuna/cpp_dev/build",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/home/bigkahuna/cpp_dev/include -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/routes    -std=gnu++2a -o CMakeFiles/rest_api.dir/routes/user.cpp.o -c /home/bigkahuna/cpp_dev/routes/user.cpp",
+  "file": "/home/bigkahuna/cpp_dev/routes/user.cpp"
 }
 ]

@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++2a
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE
 
-CXX_INCLUDES = -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/handlers 
+CXX_INCLUDES = -I/home/bigkahuna/cpp_dev/include -I/usr/include/postgresql -I/home/bigkahuna/cpp_dev/routes 
 

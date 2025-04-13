@@ -13,17 +13,21 @@ find_package(fmt REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(PQXX REQUIRED libpqxx)
 
+# Includes
+include_directories(include)
+
 # Sources
 add_executable(rest_api
-    main.cpp
-    handlers/user.cpp
+    src/main.cpp
+    src/config.cpp
+    routes/user.cpp
 )
 
 # Includes
 target_include_directories(rest_api PRIVATE
     ${Boost_INCLUDE_DIRS}
     ${PQXX_INCLUDE_DIRS}
-    handlers
+    routes
 )
 
 # Link

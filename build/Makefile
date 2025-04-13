@@ -123,59 +123,86 @@ rest_api/fast:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/build
 .PHONY : rest_api/fast
 
-handlers/user.o: handlers/user.cpp.o
+routes/user.o: routes/user.cpp.o
 
-.PHONY : handlers/user.o
-
-# target to build an object file
-handlers/user.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/handlers/user.cpp.o
-.PHONY : handlers/user.cpp.o
-
-handlers/user.i: handlers/user.cpp.i
-
-.PHONY : handlers/user.i
-
-# target to preprocess a source file
-handlers/user.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/handlers/user.cpp.i
-.PHONY : handlers/user.cpp.i
-
-handlers/user.s: handlers/user.cpp.s
-
-.PHONY : handlers/user.s
-
-# target to generate assembly for a file
-handlers/user.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/handlers/user.cpp.s
-.PHONY : handlers/user.cpp.s
-
-main.o: main.cpp.o
-
-.PHONY : main.o
+.PHONY : routes/user.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/main.cpp.o
-.PHONY : main.cpp.o
+routes/user.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/routes/user.cpp.o
+.PHONY : routes/user.cpp.o
 
-main.i: main.cpp.i
+routes/user.i: routes/user.cpp.i
 
-.PHONY : main.i
+.PHONY : routes/user.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/main.cpp.i
-.PHONY : main.cpp.i
+routes/user.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/routes/user.cpp.i
+.PHONY : routes/user.cpp.i
 
-main.s: main.cpp.s
+routes/user.s: routes/user.cpp.s
 
-.PHONY : main.s
+.PHONY : routes/user.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/main.cpp.s
-.PHONY : main.cpp.s
+routes/user.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/routes/user.cpp.s
+.PHONY : routes/user.cpp.s
+
+src/config.o: src/config.cpp.o
+
+.PHONY : src/config.o
+
+# target to build an object file
+src/config.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/config.cpp.o
+.PHONY : src/config.cpp.o
+
+src/config.i: src/config.cpp.i
+
+.PHONY : src/config.i
+
+# target to preprocess a source file
+src/config.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/config.cpp.i
+.PHONY : src/config.cpp.i
+
+src/config.s: src/config.cpp.s
+
+.PHONY : src/config.s
+
+# target to generate assembly for a file
+src/config.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/config.cpp.s
+.PHONY : src/config.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -186,12 +213,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... rest_api"
-	@echo "... handlers/user.o"
-	@echo "... handlers/user.i"
-	@echo "... handlers/user.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... routes/user.o"
+	@echo "... routes/user.i"
+	@echo "... routes/user.s"
+	@echo "... src/config.o"
+	@echo "... src/config.i"
+	@echo "... src/config.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

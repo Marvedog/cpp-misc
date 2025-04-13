@@ -6,9 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/bigkahuna/cpp_dev/handlers/user.cpp
-user.hpp
-/home/bigkahuna/cpp_dev/handlers/user.hpp
+../include/routes/user.hpp
+boost/asio/ip/tcp.hpp
+-
+
+/home/bigkahuna/cpp_dev/routes/user.cpp
+routes/user.hpp
+/home/bigkahuna/cpp_dev/routes/routes/user.hpp
 boost/beast/core.hpp
 -
 boost/beast/http.hpp
@@ -27,18 +31,4 @@ iostream
 -
 string
 -
-
-/home/bigkahuna/cpp_dev/handlers/user.hpp
-boost/asio/ip/tcp.hpp
--
-
-/home/bigkahuna/cpp_dev/main.cpp
-boost/asio.hpp
--
-iostream
--
-thread
--
-handlers/user.hpp
-/home/bigkahuna/cpp_dev/handlers/user.hpp
 

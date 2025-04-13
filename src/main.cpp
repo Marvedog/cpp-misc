@@ -1,8 +1,9 @@
+#include "config.hpp"
+#include "routes/user.hpp"
+
 #include <boost/asio.hpp>
 #include <iostream>
 #include <thread>
-#include "handlers/user.hpp"
-
 
 using tcp = boost::asio::ip::tcp;
 
@@ -12,6 +13,15 @@ using tcp = boost::asio::ip::tcp;
 // ------------------------------------------------------------
 int main() {
     try {
+        ConfigLoader config;
+        config.load(".env");
+    
+        std::string db_host = config.get("DB_HOST");
+        std::string port = config.get("PORT");
+
+        std::cout << "Connecting to DB at: " << db_host << "\n";
+        std::cout << "Server will start on port: " << port << "\n";
+
         boost::asio::io_context ioc;
 
         // Create a TCP acceptor listening on port 8080 (IPv4)

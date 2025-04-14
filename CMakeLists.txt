@@ -14,20 +14,20 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(PQXX REQUIRED libpqxx)
 
 # Includes
-include_directories(include)
+include_directories(${PROJECT_SOURCE_DIR}/src)
+
+# Collect all .cpp files in src/ recursively
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
+    ${CMAKE_SOURCE_DIR}/src/*.cpp
+)
 
 # Sources
-add_executable(rest_api
-    src/main.cpp
-    src/config.cpp
-    routes/user.cpp
-)
+add_executable(rest_api ${SOURCES})
 
 # Includes
 target_include_directories(rest_api PRIVATE
     ${Boost_INCLUDE_DIRS}
     ${PQXX_INCLUDE_DIRS}
-    routes
 )
 
 # Link

@@ -107,6 +107,7 @@ preinstall/fast:
 
 # clear depends
 depend:
+	$(CMAKE_COMMAND) -P /home/bigkahuna/cpp_dev/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
@@ -122,33 +123,6 @@ rest_api: cmake_check_build_system
 rest_api/fast:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/build
 .PHONY : rest_api/fast
-
-routes/user.o: routes/user.cpp.o
-
-.PHONY : routes/user.o
-
-# target to build an object file
-routes/user.cpp.o:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/routes/user.cpp.o
-.PHONY : routes/user.cpp.o
-
-routes/user.i: routes/user.cpp.i
-
-.PHONY : routes/user.i
-
-# target to preprocess a source file
-routes/user.cpp.i:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/routes/user.cpp.i
-.PHONY : routes/user.cpp.i
-
-routes/user.s: routes/user.cpp.s
-
-.PHONY : routes/user.s
-
-# target to generate assembly for a file
-routes/user.cpp.s:
-	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/routes/user.cpp.s
-.PHONY : routes/user.cpp.s
 
 src/config.o: src/config.cpp.o
 
@@ -204,6 +178,60 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/routes/health.o: src/routes/health.cpp.o
+
+.PHONY : src/routes/health.o
+
+# target to build an object file
+src/routes/health.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/health.cpp.o
+.PHONY : src/routes/health.cpp.o
+
+src/routes/health.i: src/routes/health.cpp.i
+
+.PHONY : src/routes/health.i
+
+# target to preprocess a source file
+src/routes/health.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/health.cpp.i
+.PHONY : src/routes/health.cpp.i
+
+src/routes/health.s: src/routes/health.cpp.s
+
+.PHONY : src/routes/health.s
+
+# target to generate assembly for a file
+src/routes/health.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/health.cpp.s
+.PHONY : src/routes/health.cpp.s
+
+src/routes/user.o: src/routes/user.cpp.o
+
+.PHONY : src/routes/user.o
+
+# target to build an object file
+src/routes/user.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/user.cpp.o
+.PHONY : src/routes/user.cpp.o
+
+src/routes/user.i: src/routes/user.cpp.i
+
+.PHONY : src/routes/user.i
+
+# target to preprocess a source file
+src/routes/user.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/user.cpp.i
+.PHONY : src/routes/user.cpp.i
+
+src/routes/user.s: src/routes/user.cpp.s
+
+.PHONY : src/routes/user.s
+
+# target to generate assembly for a file
+src/routes/user.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/user.cpp.s
+.PHONY : src/routes/user.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -213,15 +241,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... rest_api"
-	@echo "... routes/user.o"
-	@echo "... routes/user.i"
-	@echo "... routes/user.s"
 	@echo "... src/config.o"
 	@echo "... src/config.i"
 	@echo "... src/config.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/routes/health.o"
+	@echo "... src/routes/health.i"
+	@echo "... src/routes/health.s"
+	@echo "... src/routes/user.o"
+	@echo "... src/routes/user.i"
+	@echo "... src/routes/user.s"
 .PHONY : help
 
 
@@ -233,6 +264,7 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
+	$(CMAKE_COMMAND) -P /home/bigkahuna/cpp_dev/build/CMakeFiles/VerifyGlobs.cmake
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

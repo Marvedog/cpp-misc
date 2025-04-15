@@ -1,9 +1,16 @@
 #pragma once
-#include <boost/beast/http.hpp>
+
 #include <string>
+
+#include <pqxx/pqxx>
+
+#include <boost/beast/http.hpp>
 
 namespace http = boost::beast::http;
 
+using Request = http::request<http::string_body>;
+using Response = http::response<http::string_body>;
+
 namespace routes {
-    void handle_user_request(http::request<http::string_body>& req, http::response<http::string_body>& res);
+    void handle_user(Request& req, Response&res, pqxx::connection& conn);
 }

@@ -151,6 +151,33 @@ src/config.cpp.s:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/config.cpp.s
 .PHONY : src/config.cpp.s
 
+src/db/user.o: src/db/user.cpp.o
+
+.PHONY : src/db/user.o
+
+# target to build an object file
+src/db/user.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/db/user.cpp.o
+.PHONY : src/db/user.cpp.o
+
+src/db/user.i: src/db/user.cpp.i
+
+.PHONY : src/db/user.i
+
+# target to preprocess a source file
+src/db/user.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/db/user.cpp.i
+.PHONY : src/db/user.cpp.i
+
+src/db/user.s: src/db/user.cpp.s
+
+.PHONY : src/db/user.s
+
+# target to generate assembly for a file
+src/db/user.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/db/user.cpp.s
+.PHONY : src/db/user.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -244,6 +271,9 @@ help:
 	@echo "... src/config.o"
 	@echo "... src/config.i"
 	@echo "... src/config.s"
+	@echo "... src/db/user.o"
+	@echo "... src/db/user.i"
+	@echo "... src/db/user.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

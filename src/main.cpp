@@ -2,6 +2,8 @@
 #include "routes/health.hpp"
 #include "routes/user.hpp"
 
+#include <pqxx/pqxx>
+
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
 #include <boost/asio.hpp>
@@ -12,14 +14,16 @@ using tcp = boost::asio::ip::tcp;
 namespace http = boost::beast::http;
 namespace beast = boost::beast;
 
+using Request = http::request<http::string_body>;
+using Response = http::response<http::string_body>;
 
-void route_request(http::request<http::string_body>& req, http::response<http::string_body>& res) {
+void route_request(Request& req, Response& res, pqxx::connection& db_conn) {
     const std::string target = std::string(req.target());
 
     if (target.rfind("/v1/health", 0) == 0) {
         routes::handle_health(req, res);
     } else if (target.rfind("/v1/user", 0) == 0) {
-        routes::handle_user_request(req, res);
+        routes::handle_user(req, res, db_conn);
     } else {
         res.result(http::status::not_found);
         res.set(http::field::content_type, "text/plain");
@@ -29,7 +33,7 @@ void route_request(http::request<http::string_body>& req, http::response<http::s
 }
 
 
-void handle_session(tcp::socket socket) {
+void handle_session(tcp::socket socket, std::shared_ptr<pqxx::connection> db_conn) {
     try {
         beast::flat_buffer buffer;
         http::request<http::string_body> req;
@@ -37,7 +41,7 @@ void handle_session(tcp::socket socket) {
 
         http::response<http::string_body> res;
 
-        route_request(req, res);
+        route_request(req, res, *db_conn);
 
         http::write(socket, res);
 
@@ -61,6 +65,10 @@ int main() {
         std::cout << "Connecting to DB at: " << db_host << "\n";
         std::cout << "Server will start on port: " << port << "\n";
 
+        // Shared so that all threads can access the db simultaneously
+        // TODO: Needs testing for race conditions (need to ensure atomic db actions)
+        auto db_conn = std::make_shared<pqxx::connection>("dbname=chatapp user=postgres password=secret host=localhost");
+
         boost::asio::io_context ioc;
 
         // Create a TCP acceptor listening on port 8080 (IPv4)
@@ -74,8 +82,8 @@ int main() {
             tcp::socket socket = acceptor.accept();
 
             // Spawn a new thread to handle the client session
-            std::thread([s = std::move(socket)]() mutable {
-                handle_session(std::move(s));
+            std::thread([s = std::move(socket), db_conn]() mutable {
+                handle_session(std::move(s), db_conn);
             }).detach();  // Detach so the thread runs independently
         }
     } catch (std::exception& e) {

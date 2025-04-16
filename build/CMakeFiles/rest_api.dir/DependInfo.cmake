@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/bigkahuna/cpp_dev/src/main.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/main.cpp.o"
   "/home/bigkahuna/cpp_dev/src/routes/health.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/health.cpp.o"
   "/home/bigkahuna/cpp_dev/src/routes/user.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/user.cpp.o"
+  "/home/bigkahuna/cpp_dev/src/ws/session.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

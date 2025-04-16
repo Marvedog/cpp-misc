@@ -286,6 +286,33 @@ src/routes/user.cpp.s:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/user.cpp.s
 .PHONY : src/routes/user.cpp.s
 
+src/ws/session.o: src/ws/session.cpp.o
+
+.PHONY : src/ws/session.o
+
+# target to build an object file
+src/ws/session.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/session.cpp.o
+.PHONY : src/ws/session.cpp.o
+
+src/ws/session.i: src/ws/session.cpp.i
+
+.PHONY : src/ws/session.i
+
+# target to preprocess a source file
+src/ws/session.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/session.cpp.i
+.PHONY : src/ws/session.cpp.i
+
+src/ws/session.s: src/ws/session.cpp.s
+
+.PHONY : src/ws/session.s
+
+# target to generate assembly for a file
+src/ws/session.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/session.cpp.s
+.PHONY : src/ws/session.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -313,6 +340,9 @@ help:
 	@echo "... src/routes/user.o"
 	@echo "... src/routes/user.i"
 	@echo "... src/routes/user.s"
+	@echo "... src/ws/session.o"
+	@echo "... src/ws/session.i"
+	@echo "... src/ws/session.s"
 .PHONY : help
 
 

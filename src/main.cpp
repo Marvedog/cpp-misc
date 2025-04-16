@@ -1,17 +1,20 @@
 #include "config.hpp"
 #include "routes/health.hpp"
 #include "routes/user.hpp"
+#include "ws/session.hpp"
 
 #include <pqxx/pqxx>
 
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
+#include <boost/beast/websocket.hpp>
 #include <boost/asio.hpp>
 #include <iostream>
 #include <thread>
 
 using tcp = boost::asio::ip::tcp;
 namespace http = boost::beast::http;
+namespace websocket = boost::beast::websocket;
 namespace beast = boost::beast;
 
 using Request = http::request<http::string_body>;
@@ -36,15 +39,18 @@ void route_request(Request& req, Response& res, pqxx::connection& db_conn) {
 void handle_session(tcp::socket socket, std::shared_ptr<pqxx::connection> db_conn) {
     try {
         beast::flat_buffer buffer;
-        http::request<http::string_body> req;
+        Request req;
         http::read(socket, buffer, req);
 
-        http::response<http::string_body> res;
+        // Handle WebSocket upgrade
+        if (websocket::is_upgrade(req)) {
+            std::make_shared<WebSocketSession>(std::move(socket))->run();
+            return;
+        }
 
+        Response res;
         route_request(req, res, *db_conn);
-
         http::write(socket, res);
-
     } catch (const std::exception& e) {
         std::cerr << "Session error: " << e.what() << "\n";
     }

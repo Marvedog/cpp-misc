@@ -17,6 +17,7 @@ CMakeFiles/rest_api.dir/src/main.cpp.o
  /home/bigkahuna/cpp_dev/src/main.cpp
  /home/bigkahuna/cpp_dev/src/routes/health.hpp
  /home/bigkahuna/cpp_dev/src/routes/user.hpp
+ /home/bigkahuna/cpp_dev/src/ws/session.hpp
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o
  /home/bigkahuna/cpp_dev/src/routes/health.cpp
  /home/bigkahuna/cpp_dev/src/routes/health.hpp
@@ -25,3 +26,6 @@ CMakeFiles/rest_api.dir/src/routes/user.cpp.o
  /home/bigkahuna/cpp_dev/src/models/user.hpp
  /home/bigkahuna/cpp_dev/src/routes/user.cpp
  /home/bigkahuna/cpp_dev/src/routes/user.hpp
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o
+ /home/bigkahuna/cpp_dev/src/ws/session.cpp
+ /home/bigkahuna/cpp_dev/src/ws/session.hpp

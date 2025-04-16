@@ -16,6 +16,7 @@ CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/config.hpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/routes/health.hpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/routes/user.hpp
+CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/ws/session.hpp
 
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o: ../src/routes/health.cpp
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o: ../src/routes/health.hpp
@@ -24,4 +25,7 @@ CMakeFiles/rest_api.dir/src/routes/user.cpp.o: ../src/db/user.hpp
 CMakeFiles/rest_api.dir/src/routes/user.cpp.o: ../src/models/user.hpp
 CMakeFiles/rest_api.dir/src/routes/user.cpp.o: ../src/routes/user.cpp
 CMakeFiles/rest_api.dir/src/routes/user.cpp.o: ../src/routes/user.hpp
+
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/session.cpp
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/session.hpp
 

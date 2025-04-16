@@ -28,5 +28,10 @@
   "directory": "/home/bigkahuna/cpp_dev/build",
   "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/home/bigkahuna/cpp_dev/src -I/usr/include/postgresql    -std=gnu++2a -o CMakeFiles/rest_api.dir/src/routes/user.cpp.o -c /home/bigkahuna/cpp_dev/src/routes/user.cpp",
   "file": "/home/bigkahuna/cpp_dev/src/routes/user.cpp"
+},
+{
+  "directory": "/home/bigkahuna/cpp_dev/build",
+  "command": "/usr/bin/c++  -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DFMT_LOCALE -I/home/bigkahuna/cpp_dev/src -I/usr/include/postgresql    -std=gnu++2a -o CMakeFiles/rest_api.dir/src/ws/session.cpp.o -c /home/bigkahuna/cpp_dev/src/ws/session.cpp",
+  "file": "/home/bigkahuna/cpp_dev/src/ws/session.cpp"
 }
 ]

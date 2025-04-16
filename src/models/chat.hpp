@@ -6,19 +6,19 @@
 
 namespace models {
 
-    struct User {
+    struct Chat {
         int id;
-        std::string username;
+        std::string name;
 
         // Constructor to support instantiating via parameters
-        User(int id, std::string username)
-        : id(id), username(std::move(username)) {}
+        Chat(int id, std::string name)
+        : id(id), name(std::move(name)) {}
     };
 
-    inline void to_json(nlohmann::json& j, const User& u) {
+    inline void to_json(nlohmann::json& j, const Chat& u) {
         j = nlohmann::json{
             {"id", u.id},
-            {"username", u.username},
+            {"name", u.name},
         };
     }
 }

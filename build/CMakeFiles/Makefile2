@@ -74,12 +74,12 @@ clean: CMakeFiles/rest_api.dir/clean
 CMakeFiles/rest_api.dir/all:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/depend
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target rest_api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target rest_api"
 .PHONY : CMakeFiles/rest_api.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/rest_api.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/bigkahuna/cpp_dev/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/bigkahuna/cpp_dev/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rest_api.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/bigkahuna/cpp_dev/build/CMakeFiles 0
 .PHONY : CMakeFiles/rest_api.dir/rule

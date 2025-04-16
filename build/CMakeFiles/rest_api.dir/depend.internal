@@ -4,6 +4,10 @@
 CMakeFiles/rest_api.dir/src/config.cpp.o
  /home/bigkahuna/cpp_dev/src/config.cpp
  /home/bigkahuna/cpp_dev/src/config.hpp
+CMakeFiles/rest_api.dir/src/db/message.cpp.o
+ /home/bigkahuna/cpp_dev/src/db/message.cpp
+ /home/bigkahuna/cpp_dev/src/db/message.hpp
+ /home/bigkahuna/cpp_dev/src/models/message.hpp
 CMakeFiles/rest_api.dir/src/db/user.cpp.o
  /home/bigkahuna/cpp_dev/src/db/user.cpp
  /home/bigkahuna/cpp_dev/src/db/user.hpp

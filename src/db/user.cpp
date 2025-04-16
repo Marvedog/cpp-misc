@@ -9,7 +9,7 @@ namespace db {
     std::optional<models::User> User::get_user_by_id(int id) {
         pqxx::work txn(conn_);
         auto result = txn.exec_params(
-            "SELECT id, username, email FROM users WHERE id = $1", id
+            "SELECT id, username FROM users WHERE id = $1", id
         );
 
         if (result.empty()) {
@@ -19,8 +19,7 @@ namespace db {
         const auto& row = result[0];
         models::User user{
             row["id"].as<int>(),
-            row["username"].as<std::string>(),
-            row["email"].as<std::string>()
+            row["username"].as<std::string>()
         };
     
         return user;
@@ -28,14 +27,13 @@ namespace db {
 
     std::vector<models::User> User::get_all_users() {
         pqxx::work txn(conn_);
-        auto result = txn.exec("SELECT id, username, email FROM users");
+        auto result = txn.exec("SELECT id, username FROM users");
     
         std::vector<models::User> users;
         for (const auto& row : result) {
             users.emplace_back(
                 row["id"].as<int>(),
-                row["username"].as<std::string>(),
-                row["email"].as<std::string>()
+                row["username"].as<std::string>()
             );
         }
     
@@ -45,9 +43,8 @@ namespace db {
     void User::create_user(const models::User& user) {
         pqxx::work txn(conn_);
         txn.exec_params(
-            "INSERT INTO users (username, email) VALUES ($1, $2)",
-            user.username,
-            user.email
+            "INSERT INTO users (username) VALUES ($1, $2)",
+            user.username
         );
         txn.commit();
     }

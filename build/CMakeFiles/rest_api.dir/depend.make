@@ -4,6 +4,10 @@
 CMakeFiles/rest_api.dir/src/config.cpp.o: ../src/config.cpp
 CMakeFiles/rest_api.dir/src/config.cpp.o: ../src/config.hpp
 
+CMakeFiles/rest_api.dir/src/db/message.cpp.o: ../src/db/message.cpp
+CMakeFiles/rest_api.dir/src/db/message.cpp.o: ../src/db/message.hpp
+CMakeFiles/rest_api.dir/src/db/message.cpp.o: ../src/models/message.hpp
+
 CMakeFiles/rest_api.dir/src/db/user.cpp.o: ../src/db/user.cpp
 CMakeFiles/rest_api.dir/src/db/user.cpp.o: ../src/db/user.hpp
 CMakeFiles/rest_api.dir/src/db/user.cpp.o: ../src/models/user.hpp

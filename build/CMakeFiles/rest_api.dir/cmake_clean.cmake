@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/rest_api.dir/src/config.cpp.o"
+  "CMakeFiles/rest_api.dir/src/db/message.cpp.o"
   "CMakeFiles/rest_api.dir/src/db/user.cpp.o"
   "CMakeFiles/rest_api.dir/src/main.cpp.o"
   "CMakeFiles/rest_api.dir/src/routes/health.cpp.o"

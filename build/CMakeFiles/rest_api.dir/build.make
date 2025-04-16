@@ -70,9 +70,22 @@ CMakeFiles/rest_api.dir/src/config.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/config.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/config.cpp -o CMakeFiles/rest_api.dir/src/config.cpp.s
 
+CMakeFiles/rest_api.dir/src/db/message.cpp.o: CMakeFiles/rest_api.dir/flags.make
+CMakeFiles/rest_api.dir/src/db/message.cpp.o: ../src/db/message.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rest_api.dir/src/db/message.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/db/message.cpp.o -c /home/bigkahuna/cpp_dev/src/db/message.cpp
+
+CMakeFiles/rest_api.dir/src/db/message.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rest_api.dir/src/db/message.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bigkahuna/cpp_dev/src/db/message.cpp > CMakeFiles/rest_api.dir/src/db/message.cpp.i
+
+CMakeFiles/rest_api.dir/src/db/message.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/db/message.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/db/message.cpp -o CMakeFiles/rest_api.dir/src/db/message.cpp.s
+
 CMakeFiles/rest_api.dir/src/db/user.cpp.o: CMakeFiles/rest_api.dir/flags.make
 CMakeFiles/rest_api.dir/src/db/user.cpp.o: ../src/db/user.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/rest_api.dir/src/db/user.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rest_api.dir/src/db/user.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/db/user.cpp.o -c /home/bigkahuna/cpp_dev/src/db/user.cpp
 
 CMakeFiles/rest_api.dir/src/db/user.cpp.i: cmake_force
@@ -85,7 +98,7 @@ CMakeFiles/rest_api.dir/src/db/user.cpp.s: cmake_force
 
 CMakeFiles/rest_api.dir/src/main.cpp.o: CMakeFiles/rest_api.dir/flags.make
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/rest_api.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rest_api.dir/src/main.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/main.cpp.o -c /home/bigkahuna/cpp_dev/src/main.cpp
 
 CMakeFiles/rest_api.dir/src/main.cpp.i: cmake_force
@@ -98,7 +111,7 @@ CMakeFiles/rest_api.dir/src/main.cpp.s: cmake_force
 
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o: CMakeFiles/rest_api.dir/flags.make
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o: ../src/routes/health.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/rest_api.dir/src/routes/health.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rest_api.dir/src/routes/health.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/routes/health.cpp.o -c /home/bigkahuna/cpp_dev/src/routes/health.cpp
 
 CMakeFiles/rest_api.dir/src/routes/health.cpp.i: cmake_force
@@ -111,7 +124,7 @@ CMakeFiles/rest_api.dir/src/routes/health.cpp.s: cmake_force
 
 CMakeFiles/rest_api.dir/src/routes/user.cpp.o: CMakeFiles/rest_api.dir/flags.make
 CMakeFiles/rest_api.dir/src/routes/user.cpp.o: ../src/routes/user.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/rest_api.dir/src/routes/user.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/rest_api.dir/src/routes/user.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/routes/user.cpp.o -c /home/bigkahuna/cpp_dev/src/routes/user.cpp
 
 CMakeFiles/rest_api.dir/src/routes/user.cpp.i: cmake_force
@@ -125,6 +138,7 @@ CMakeFiles/rest_api.dir/src/routes/user.cpp.s: cmake_force
 # Object files for target rest_api
 rest_api_OBJECTS = \
 "CMakeFiles/rest_api.dir/src/config.cpp.o" \
+"CMakeFiles/rest_api.dir/src/db/message.cpp.o" \
 "CMakeFiles/rest_api.dir/src/db/user.cpp.o" \
 "CMakeFiles/rest_api.dir/src/main.cpp.o" \
 "CMakeFiles/rest_api.dir/src/routes/health.cpp.o" \
@@ -134,6 +148,7 @@ rest_api_OBJECTS = \
 rest_api_EXTERNAL_OBJECTS =
 
 rest_api: CMakeFiles/rest_api.dir/src/config.cpp.o
+rest_api: CMakeFiles/rest_api.dir/src/db/message.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/db/user.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/main.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/routes/health.cpp.o
@@ -144,7 +159,7 @@ rest_api: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 rest_api: /usr/lib/x86_64-linux-gnu/libfmt.a
 rest_api: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.71.0
 rest_api: CMakeFiles/rest_api.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable rest_api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable rest_api"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rest_api.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

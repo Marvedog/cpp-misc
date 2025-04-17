@@ -4,6 +4,8 @@
 #include <boost/beast/websocket.hpp>
 #include <boost/asio.hpp>
 
+#include <string>
+
 /**
  * Why enable_shared_from_this?
  * This is used to safely create a std::shared_ptr to an object from within that object itself.
@@ -21,6 +23,9 @@ public:
     // Entry point: called right after socket is accepted
     void run();
 
+    // Send messages
+    void send(const std::string& msg);
+
 private:
     // Called when a message is read from the socket
     void do_read();
@@ -36,4 +41,7 @@ private:
 
     // Internal buffer to hold received data
     boost::beast::flat_buffer buffer_;
+
+    // Default room id for now
+    int room_id_ = 1;
 };

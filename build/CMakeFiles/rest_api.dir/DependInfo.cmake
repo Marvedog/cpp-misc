@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/bigkahuna/cpp_dev/src/chat_room_manager.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o"
   "/home/bigkahuna/cpp_dev/src/config.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/config.cpp.o"
   "/home/bigkahuna/cpp_dev/src/db/message.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/db/message.cpp.o"
   "/home/bigkahuna/cpp_dev/src/db/user.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/db/user.cpp.o"
   "/home/bigkahuna/cpp_dev/src/main.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/main.cpp.o"
   "/home/bigkahuna/cpp_dev/src/routes/health.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/health.cpp.o"
   "/home/bigkahuna/cpp_dev/src/routes/user.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/user.cpp.o"
+  "/home/bigkahuna/cpp_dev/src/routes/ws_chat.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o"
   "/home/bigkahuna/cpp_dev/src/ws/session.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

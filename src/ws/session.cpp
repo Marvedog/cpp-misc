@@ -1,4 +1,5 @@
 #include "session.hpp"
+#include "../chat_room_manager.hpp"
 #include <iostream>
 
 // Constructor: wrap the raw TCP socket in a Beast WebSocket stream.
@@ -18,8 +19,21 @@ void WebSocketSession::run() {
             std::cerr << "WebSocket accept error: " << ec.message() << "\n";
             return;
         }
+
+        // Join room after successful handshake
+        ChatRoomManager::get_instance().join_room(self->room_id_, self);
+
         self->do_read();
     });
+}
+
+// Prepare the stream to send a text message (or binary)
+void WebSocketSession::send(const std::string& msg) {
+    ws_.text(true);
+    ws_.async_write(boost::asio::buffer(msg),
+        [self = shared_from_this()](boost::beast::error_code ec, std::size_t bytes) {
+            self->on_write(ec, bytes);
+        });
 }
 
 /**
@@ -39,6 +53,8 @@ void WebSocketSession::do_read() {
  * 1. Converts the buffer into a string.
  * 2. Logs it to console.
  * 3. Echoes it back to the sender.
+ * 
+ * TODO: This is where we would persist the message to the db (?)
  */
 void WebSocketSession::on_read(boost::beast::error_code ec, std::size_t) {
     // If the connection was closed gracefully
@@ -53,14 +69,8 @@ void WebSocketSession::on_read(boost::beast::error_code ec, std::size_t) {
     std::string msg = boost::beast::buffers_to_string(buffer_.data());
     std::cout << "Received: " << msg << "\n";
 
-    // Prepare the stream to send a text message (or binary)
-    ws_.text(ws_.got_text());
-
-    // Echo the message back to the client
-    ws_.async_write(boost::asio::buffer(msg),
-        [self = shared_from_this()](boost::beast::error_code ec, std::size_t bytes_transferred) {
-            self->on_write(ec, bytes_transferred);
-        });
+    // Broadcast to room
+    ChatRoomManager::get_instance().broadcast(room_id_, msg);
 }
 
 

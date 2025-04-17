@@ -124,6 +124,33 @@ rest_api/fast:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/build
 .PHONY : rest_api/fast
 
+src/chat_room_manager.o: src/chat_room_manager.cpp.o
+
+.PHONY : src/chat_room_manager.o
+
+# target to build an object file
+src/chat_room_manager.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o
+.PHONY : src/chat_room_manager.cpp.o
+
+src/chat_room_manager.i: src/chat_room_manager.cpp.i
+
+.PHONY : src/chat_room_manager.i
+
+# target to preprocess a source file
+src/chat_room_manager.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.i
+.PHONY : src/chat_room_manager.cpp.i
+
+src/chat_room_manager.s: src/chat_room_manager.cpp.s
+
+.PHONY : src/chat_room_manager.s
+
+# target to generate assembly for a file
+src/chat_room_manager.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.s
+.PHONY : src/chat_room_manager.cpp.s
+
 src/config.o: src/config.cpp.o
 
 .PHONY : src/config.o
@@ -286,6 +313,33 @@ src/routes/user.cpp.s:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/user.cpp.s
 .PHONY : src/routes/user.cpp.s
 
+src/routes/ws_chat.o: src/routes/ws_chat.cpp.o
+
+.PHONY : src/routes/ws_chat.o
+
+# target to build an object file
+src/routes/ws_chat.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o
+.PHONY : src/routes/ws_chat.cpp.o
+
+src/routes/ws_chat.i: src/routes/ws_chat.cpp.i
+
+.PHONY : src/routes/ws_chat.i
+
+# target to preprocess a source file
+src/routes/ws_chat.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.i
+.PHONY : src/routes/ws_chat.cpp.i
+
+src/routes/ws_chat.s: src/routes/ws_chat.cpp.s
+
+.PHONY : src/routes/ws_chat.s
+
+# target to generate assembly for a file
+src/routes/ws_chat.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.s
+.PHONY : src/routes/ws_chat.cpp.s
+
 src/ws/session.o: src/ws/session.cpp.o
 
 .PHONY : src/ws/session.o
@@ -322,6 +376,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... rest_api"
+	@echo "... src/chat_room_manager.o"
+	@echo "... src/chat_room_manager.i"
+	@echo "... src/chat_room_manager.s"
 	@echo "... src/config.o"
 	@echo "... src/config.i"
 	@echo "... src/config.s"
@@ -340,6 +397,9 @@ help:
 	@echo "... src/routes/user.o"
 	@echo "... src/routes/user.i"
 	@echo "... src/routes/user.s"
+	@echo "... src/routes/ws_chat.o"
+	@echo "... src/routes/ws_chat.i"
+	@echo "... src/routes/ws_chat.s"
 	@echo "... src/ws/session.o"
 	@echo "... src/ws/session.i"
 	@echo "... src/ws/session.s"

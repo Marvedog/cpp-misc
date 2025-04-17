@@ -10,7 +10,9 @@
 #include <boost/beast/websocket.hpp>
 #include <boost/asio.hpp>
 #include <iostream>
+#include <fstream>
 #include <thread>
+#include <filesystem>
 
 using tcp = boost::asio::ip::tcp;
 namespace http = boost::beast::http;
@@ -27,6 +29,24 @@ void route_request(Request& req, Response& res, pqxx::connection& db_conn) {
         routes::handle_health(req, res);
     } else if (target.rfind("/v1/user", 0) == 0) {
         routes::handle_user(req, res, db_conn);
+    } else if (target == "/chat") {
+        std::ifstream file("static/chat.html");
+        std::cout << "Working directory: " << std::filesystem::current_path() << "\n";
+        if (file) {
+            std::stringstream buffer;
+            buffer << file.rdbuf();
+    
+            res.result(http::status::ok);
+            res.set(http::field::content_type, "text/html");
+            res.body() = buffer.str();
+            res.prepare_payload();
+        } else {
+            std::cerr << "Could not find chat.html: " << "\n";
+            res.result(http::status::not_found);
+            res.set(http::field::content_type, "text/plain");
+            res.body() = "Chat page not found.";
+            res.prepare_payload();
+        }
     } else {
         res.result(http::status::not_found);
         res.set(http::field::content_type, "text/plain");

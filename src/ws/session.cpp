@@ -1,6 +1,12 @@
 #include "session.hpp"
 #include "../chat_room_manager.hpp"
+
 #include <iostream>
+#include <string>
+#include <regex>
+
+namespace http = boost::beast::http;
+using Request = http::request<http::string_body>;
 
 // Constructor: wrap the raw TCP socket in a Beast WebSocket stream.
 WebSocketSession::WebSocketSession(boost::asio::ip::tcp::socket&& socket)
@@ -13,7 +19,18 @@ WebSocketSession::WebSocketSession(boost::asio::ip::tcp::socket&& socket)
  * 2. It asynchronously upgrades the connection from HTTP to WebSocket.
  * 3. Once complete, `on_accept` (in this case a lambda) is called.
  */
-void WebSocketSession::run() {
+void WebSocketSession::run(Request req) {
+
+    // parse room id
+    const std::string target = std::string(req.target());
+
+    std::regex re("room=[0-9]+");
+
+    if (std::regex_match(target, re)) {
+        //room_id_ = target.
+    }
+
+
     ws_.async_accept([self = shared_from_this()](boost::beast::error_code ec) {
         if (ec) {
             std::cerr << "WebSocket accept error: " << ec.message() << "\n";
@@ -32,7 +49,11 @@ void WebSocketSession::send(const std::string& msg) {
     ws_.text(true);
     ws_.async_write(boost::asio::buffer(msg),
         [self = shared_from_this()](boost::beast::error_code ec, std::size_t bytes) {
-            self->on_write(ec, bytes);
+            if (ec == boost::beast::websocket::error::closed) {
+                self->on_close();
+            } else {
+                self->on_write(ec, bytes);
+            }
         });
 }
 
@@ -42,7 +63,11 @@ void WebSocketSession::send(const std::string& msg) {
  */
 void WebSocketSession::do_read() {
     ws_.async_read(buffer_, [self = shared_from_this()](boost::beast::error_code ec, std::size_t bytes_transferred) {
-        self->on_read(ec, bytes_transferred);
+        if (ec == boost::beast::websocket::error::closed) {
+            self->on_close();
+        } else {
+            self->on_read(ec, bytes_transferred);
+        }
     });
 }
 
@@ -57,10 +82,6 @@ void WebSocketSession::do_read() {
  * TODO: This is where we would persist the message to the db (?)
  */
 void WebSocketSession::on_read(boost::beast::error_code ec, std::size_t) {
-    // If the connection was closed gracefully
-    if (ec == boost::beast::websocket::error::closed)
-        return;
-
     if (ec) {
         std::cerr << "Read error: " << ec.message() << "\n";
         return;
@@ -87,4 +108,8 @@ void WebSocketSession::on_write(boost::beast::error_code ec, std::size_t) {
 
     buffer_.consume(buffer_.size());  // Clear buffer
     do_read();  // Wait for next message
+}
+
+void WebSocketSession::on_close() {
+    ChatRoomManager::get_instance().leave_room(room_id_, shared_from_this());
 }

@@ -1,10 +1,14 @@
 #pragma once
 
 #include <boost/beast/core.hpp>
+#include <boost/beast/http.hpp>
 #include <boost/beast/websocket.hpp>
 #include <boost/asio.hpp>
 
 #include <string>
+
+namespace http = boost::beast::http;
+using Request = http::request<http::string_body>;
 
 /**
  * Why enable_shared_from_this?
@@ -21,12 +25,14 @@ public:
     explicit WebSocketSession(boost::asio::ip::tcp::socket&& socket);
 
     // Entry point: called right after socket is accepted
-    void run();
+    void run(Request req);
 
     // Send messages
     void send(const std::string& msg);
 
 private:
+    void on_close();
+
     // Called when a message is read from the socket
     void do_read();
 

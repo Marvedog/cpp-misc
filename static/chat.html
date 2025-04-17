@@ -1,22 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat Room</title>
+</head>
 <body>
-<h2>WebSocket Chat</h2>
-<textarea id="log" rows="10" cols="50" readonly></textarea><br>
-<input id="msg" type="text" placeholder="Message">
-<button onclick="send()">Send</button>
+  <h1>Chat Room</h1>
+  <input id="username" placeholder="Enter username" />
+  <input id="message" placeholder="Type your message" />
+  <button onclick="sendMessage()">Send</button>
+  <div id="chat"></div>
 
-<script>
-  const ws = new WebSocket("ws://localhost:8080");
+  <script>
+    let ws;
+    let roomId;
+    let username;
 
-  ws.onmessage = e => {
-    document.getElementById("log").value += e.data + "\n";
-  };
+    // Parse room ID from query params
+    const params = new URLSearchParams(window.location.search);
+    roomId = params.get("room");
 
-  function send() {
-    const msg = document.getElementById("msg").value;
-    ws.send(msg);
-  }
-</script>
+    document.getElementById("username").addEventListener("change", (e) => {
+      username = e.target.value;
+    });
+
+    function connect() {
+      if (!roomId) {
+        alert("No room ID provided.");
+        return;
+      }
+
+      ws = new WebSocket(`ws://${window.location.host}/ws?room=${roomId}`);
+
+      ws.onopen = () => {
+        console.log("Connected to WebSocket");
+      };
+
+      ws.onmessage = (event) => {
+        const chat = document.getElementById("chat");
+        const msg = document.createElement("div");
+        msg.textContent = event.data;
+        chat.appendChild(msg);
+      };
+
+      ws.onclose = () => {
+        console.log("Disconnected");
+      };
+    }
+
+    function sendMessage() {
+      const messageInput = document.getElementById("message");
+      const message = messageInput.value;
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({
+          user: username,
+          message
+        }));
+        messageInput.value = '';
+      }
+    }
+
+    connect();
+  </script>
 </body>
 </html>

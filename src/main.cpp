@@ -12,7 +12,6 @@
 #include <iostream>
 #include <fstream>
 #include <thread>
-#include <filesystem>
 
 using tcp = boost::asio::ip::tcp;
 namespace http = boost::beast::http;
@@ -31,7 +30,6 @@ void route_request(Request& req, Response& res, pqxx::connection& db_conn) {
         routes::handle_user(req, res, db_conn);
     } else if (target == "/chat") {
         std::ifstream file("static/chat.html");
-        std::cout << "Working directory: " << std::filesystem::current_path() << "\n";
         if (file) {
             std::stringstream buffer;
             buffer << file.rdbuf();
@@ -41,7 +39,6 @@ void route_request(Request& req, Response& res, pqxx::connection& db_conn) {
             res.body() = buffer.str();
             res.prepare_payload();
         } else {
-            std::cerr << "Could not find chat.html: " << "\n";
             res.result(http::status::not_found);
             res.set(http::field::content_type, "text/plain");
             res.body() = "Chat page not found.";
@@ -64,7 +61,7 @@ void handle_session(tcp::socket socket, std::shared_ptr<pqxx::connection> db_con
 
         // Handle WebSocket upgrade
         if (websocket::is_upgrade(req)) {
-            std::make_shared<WebSocketSession>(std::move(socket))->run();
+            std::make_shared<WebSocketSession>(std::move(socket))->run(req);
             return;
         }
 

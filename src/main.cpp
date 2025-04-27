@@ -2,6 +2,8 @@
 #include "routes/health.hpp"
 #include "routes/user.hpp"
 #include "ws/session.hpp"
+#include "ws/listener.hpp"
+#include "ws/shared_state.hpp"
 
 #include <pqxx/pqxx>
 
@@ -21,47 +23,51 @@ namespace beast = boost::beast;
 using Request = http::request<http::string_body>;
 using Response = http::response<http::string_body>;
 
-void route_request(Request& req, Response& res, pqxx::connection& db_conn) {
-    const std::string target = std::string(req.target());
 
-    if (target.rfind("/v1/health", 0) == 0) {
-        routes::handle_health(req, res);
-    } else if (target.rfind("/v1/user", 0) == 0) {
-        routes::handle_user(req, res, db_conn);
-    } else if (target == "/chat") {
-        std::ifstream file("static/chat.html");
-        if (file) {
-            std::stringstream buffer;
-            buffer << file.rdbuf();
-    
-            res.result(http::status::ok);
-            res.set(http::field::content_type, "text/html");
-            res.body() = buffer.str();
-            res.prepare_payload();
-        } else {
-            res.result(http::status::not_found);
-            res.set(http::field::content_type, "text/plain");
-            res.body() = "Chat page not found.";
-            res.prepare_payload();
-        }
-    } else {
-        res.result(http::status::not_found);
-        res.set(http::field::content_type, "text/plain");
-        res.body() = "404 Not Found";
-        res.prepare_payload();
-    }
-}
-
-
-void handle_session(tcp::socket socket, std::shared_ptr<pqxx::connection> db_conn) {
+/*
+void handle_session(tcp::socket socket, std::shared_ptr<pqxx::connection> db_conn, boost::asio::io_context& ioc) {
     try {
         beast::flat_buffer buffer;
         Request req;
         http::read(socket, buffer, req);
 
+
+        const std::string target = std::string(req.target());
+        std::map<std::string, std::string> query_params;
+
+        std::size_t query_pos = target.find("?");
+        if (query_pos != std::string::npos) {
+            std::string query = target.substr(query_pos + 1);
+            std::stringstream ss(query);
+            std::string pair;
+            while (std::getline(ss, pair, '&')) {
+                std::size_t eq_pos = pair.find('=');
+                if (eq_pos != std::string::npos) {
+                    std::string key = pair.substr(0, eq_pos);
+                    std::string value = pair.substr(eq_pos + 1);
+                    query_params[key] = value;
+                }
+            }
+        }
+        
+        int room_id = std::stoi(query_params["room"]);
+        std::string username = query_params["username"];
+
         // Handle WebSocket upgrade
         if (websocket::is_upgrade(req)) {
-            std::make_shared<WebSocketSession>(std::move(socket))->run(req);
+            std::cout << "LEt's upgrade connection" << std::endl;
+            if (username.empty()) {
+                http::response<http::string_body> bad_resp{http::status::bad_request, req.version()};
+                bad_resp.set(http::field::content_type, "text/plain");
+                bad_resp.body() = "Missing username";
+                bad_resp.prepare_payload();
+                http::write(socket, bad_resp);
+                return;
+            }
+
+            std::cout << "Let's run websocket session" << std::endl;
+            auto session = std::make_shared<WebSocketSession>(std::move(socket), room_id, username, ioc);
+            session->run();
             return;
         }
 
@@ -72,12 +78,13 @@ void handle_session(tcp::socket socket, std::shared_ptr<pqxx::connection> db_con
         std::cerr << "Session error: " << e.what() << "\n";
     }
 }
+*/
 
 
 // ------------------------------------------------------------
 // Main entry point: sets up the server and listens for clients.
 // ------------------------------------------------------------
-int main() {
+int main(int argc, char* argv[]) {
     try {
         ConfigLoader config;
         config.load(".env");
@@ -92,23 +99,23 @@ int main() {
         // TODO: Needs testing for race conditions (need to ensure atomic db actions)
         auto db_conn = std::make_shared<pqxx::connection>("dbname=chatapp user=postgres password=secret host=localhost");
 
+        auto doc_root = argv[3];
+
+        // I/O execution context
         boost::asio::io_context ioc;
 
-        // Create a TCP acceptor listening on port 8080 (IPv4)
-        tcp::acceptor acceptor(ioc, {tcp::v4(), 8080});
+        // Open port 80
+        tcp::endpoint endpoint{tcp::v4(), 8080};
+
+        // Create and launch a listening port
+        boost::make_shared<listener>(ioc, endpoint, boost::make_shared<shared_state>(doc_root))->run();
 
         std::cout << "Server is running at http://localhost:8080\n";
+        std::cout << "HERE??";
+        ioc.run();
 
-        // Infinite loop to handle incoming connections
-        for (;;) {
-            // Wait for and accept a new client connection
-            tcp::socket socket = acceptor.accept();
+        std::cout << "Now we crashing" << std::endl;        
 
-            // Spawn a new thread to handle the client session
-            std::thread([s = std::move(socket), db_conn]() mutable {
-                handle_session(std::move(s), db_conn);
-            }).detach();  // Detach so the thread runs independently
-        }
     } catch (std::exception& e) {
         // Print errors to stderr if anything goes wrong
         std::cerr << "Error: " << e.what() << "\n";

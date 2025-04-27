@@ -340,6 +340,33 @@ src/routes/ws_chat.cpp.s:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.s
 .PHONY : src/routes/ws_chat.cpp.s
 
+src/ws/listener.o: src/ws/listener.cpp.o
+
+.PHONY : src/ws/listener.o
+
+# target to build an object file
+src/ws/listener.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/listener.cpp.o
+.PHONY : src/ws/listener.cpp.o
+
+src/ws/listener.i: src/ws/listener.cpp.i
+
+.PHONY : src/ws/listener.i
+
+# target to preprocess a source file
+src/ws/listener.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/listener.cpp.i
+.PHONY : src/ws/listener.cpp.i
+
+src/ws/listener.s: src/ws/listener.cpp.s
+
+.PHONY : src/ws/listener.s
+
+# target to generate assembly for a file
+src/ws/listener.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/listener.cpp.s
+.PHONY : src/ws/listener.cpp.s
+
 src/ws/session.o: src/ws/session.cpp.o
 
 .PHONY : src/ws/session.o
@@ -366,6 +393,60 @@ src/ws/session.s: src/ws/session.cpp.s
 src/ws/session.cpp.s:
 	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/session.cpp.s
 .PHONY : src/ws/session.cpp.s
+
+src/ws/shared_state.o: src/ws/shared_state.cpp.o
+
+.PHONY : src/ws/shared_state.o
+
+# target to build an object file
+src/ws/shared_state.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o
+.PHONY : src/ws/shared_state.cpp.o
+
+src/ws/shared_state.i: src/ws/shared_state.cpp.i
+
+.PHONY : src/ws/shared_state.i
+
+# target to preprocess a source file
+src/ws/shared_state.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.i
+.PHONY : src/ws/shared_state.cpp.i
+
+src/ws/shared_state.s: src/ws/shared_state.cpp.s
+
+.PHONY : src/ws/shared_state.s
+
+# target to generate assembly for a file
+src/ws/shared_state.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.s
+.PHONY : src/ws/shared_state.cpp.s
+
+src/ws/websocket_session.o: src/ws/websocket_session.cpp.o
+
+.PHONY : src/ws/websocket_session.o
+
+# target to build an object file
+src/ws/websocket_session.cpp.o:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o
+.PHONY : src/ws/websocket_session.cpp.o
+
+src/ws/websocket_session.i: src/ws/websocket_session.cpp.i
+
+.PHONY : src/ws/websocket_session.i
+
+# target to preprocess a source file
+src/ws/websocket_session.cpp.i:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.i
+.PHONY : src/ws/websocket_session.cpp.i
+
+src/ws/websocket_session.s: src/ws/websocket_session.cpp.s
+
+.PHONY : src/ws/websocket_session.s
+
+# target to generate assembly for a file
+src/ws/websocket_session.cpp.s:
+	$(MAKE) -f CMakeFiles/rest_api.dir/build.make CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.s
+.PHONY : src/ws/websocket_session.cpp.s
 
 # Help Target
 help:
@@ -400,9 +481,18 @@ help:
 	@echo "... src/routes/ws_chat.o"
 	@echo "... src/routes/ws_chat.i"
 	@echo "... src/routes/ws_chat.s"
+	@echo "... src/ws/listener.o"
+	@echo "... src/ws/listener.i"
+	@echo "... src/ws/listener.s"
 	@echo "... src/ws/session.o"
 	@echo "... src/ws/session.i"
 	@echo "... src/ws/session.s"
+	@echo "... src/ws/shared_state.o"
+	@echo "... src/ws/shared_state.i"
+	@echo "... src/ws/shared_state.s"
+	@echo "... src/ws/websocket_session.o"
+	@echo "... src/ws/websocket_session.i"
+	@echo "... src/ws/websocket_session.s"
 .PHONY : help
 
 

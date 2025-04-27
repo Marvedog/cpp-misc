@@ -1,14 +1,16 @@
 #pragma once
 
+#include "beast.hpp"
+#include "net.hpp"
+#include "shared_state.hpp"
+
 #include <boost/beast/core.hpp>
-#include <boost/beast/http.hpp>
 #include <boost/beast/websocket.hpp>
-#include <boost/asio.hpp>
+#include <boost/optional.hpp>
+#include <boost/smart_ptr.hpp>
 
 #include <string>
-
-namespace http = boost::beast::http;
-using Request = http::request<http::string_body>;
+#include <iostream>
 
 /**
  * Why enable_shared_from_this?
@@ -19,35 +21,46 @@ using Request = http::request<http::string_body>;
  * This class implements asynchronous operations such as async_accept and async_read. This ensures
  * that the object that owns the callback isn't destroyed prematurely.
  */
-class WebSocketSession : public std::enable_shared_from_this<WebSocketSession> {
+class HttpSession : public boost::enable_shared_from_this<HttpSession> {
 public:
     // Constructor accepts an rvalue socket (moved in, since sockets are non-copyable)
-    explicit WebSocketSession(boost::asio::ip::tcp::socket&& socket);
+    // HttpSession(boost::asio::ip::tcp::socket&& socket, int room_id, const std::string& username, boost::shared_ptr<shared_state> const& state);
+    HttpSession(boost::asio::ip::tcp::socket&& socket, boost::shared_ptr<shared_state> const& state);
 
     // Entry point: called right after socket is accepted
-    void run(Request req);
-
-    // Send messages
-    void send(const std::string& msg);
+    void run();
 
 private:
-    void on_close();
+    void fail(beast::error_code ec, char const* what);
 
     // Called when a message is read from the socket
     void do_read();
 
     // Handles message received
-    void on_read(boost::beast::error_code ec, std::size_t bytes_transferred);
+    void on_read(beast::error_code ec, std::size_t);
 
     // Called after a message is written
-    void on_write(boost::beast::error_code ec, std::size_t bytes_transferred);
+    void on_write(beast::error_code ec, std::size_t, bool close);
 
     // WebSocket stream (wraps a TCP stream)
-    boost::beast::websocket::stream<boost::beast::tcp_stream> ws_;
+    beast::tcp_stream stream_;
 
     // Internal buffer to hold received data
-    boost::beast::flat_buffer buffer_;
+    beast::flat_buffer buffer_;
+
+    // TODO: What is this for
+    boost::shared_ptr<shared_state> state_;
+
+    // TODO: WHat is this for
+    struct send_lambda;
+
+    // The parser is stored in an optional container so we can
+    // construct it from scratch it at the beginning of each new message.
+    boost::optional<http::request_parser<http::string_body>> parser_;
 
     // Default room id for now
     int room_id_ = 1;
+
+    // Username 
+    std::string username_ = "Joe";
 };

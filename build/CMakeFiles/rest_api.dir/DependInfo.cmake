@@ -12,16 +12,21 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/bigkahuna/cpp_dev/src/routes/health.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/health.cpp.o"
   "/home/bigkahuna/cpp_dev/src/routes/user.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/user.cpp.o"
   "/home/bigkahuna/cpp_dev/src/routes/ws_chat.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o"
+  "/home/bigkahuna/cpp_dev/src/ws/listener.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/ws/listener.cpp.o"
   "/home/bigkahuna/cpp_dev/src/ws/session.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
+  "/home/bigkahuna/cpp_dev/src/ws/shared_state.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o"
+  "/home/bigkahuna/cpp_dev/src/ws/websocket_session.cpp" "/home/bigkahuna/cpp_dev/build/CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "BOOST_ALL_NO_LIB"
   "BOOST_ATOMIC_DYN_LINK"
+  "BOOST_ATOMIC_NO_LIB"
   "BOOST_SYSTEM_DYN_LINK"
+  "BOOST_SYSTEM_NO_LIB"
   "BOOST_THREAD_DYN_LINK"
+  "BOOST_THREAD_NO_LIB"
   "FMT_LOCALE"
   )
 

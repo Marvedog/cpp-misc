@@ -1,66 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Chat Room</title>
 </head>
 <body>
-  <h1>Chat Room</h1>
-  <input id="username" placeholder="Enter username" />
-  <input id="message" placeholder="Type your message" />
-  <button onclick="sendMessage()">Send</button>
-  <div id="chat"></div>
+  <h1>WebSocket Chat</h1>
+  <div id="messages" style="border:1px solid #ccc; height: 300px; overflow-y: scroll;"></div>
+  <input type="text" id="messageInput" placeholder="Type message..." disabled />
+  <button id="sendBtn" disabled onclick="sendMessage()">Send</button>
 
   <script>
-    let ws;
-    let roomId;
-    let username;
-
-    // Parse room ID from query params
     const params = new URLSearchParams(window.location.search);
-    roomId = params.get("room");
+    const room = params.get("room") || "1";
+    const username = params.get("username") || "anonymous";
 
-    document.getElementById("username").addEventListener("change", (e) => {
-      username = e.target.value;
-    });
+    const ws = new WebSocket(`ws://${location.host}/chat?room=${room}&username=${username}`);
 
-    function connect() {
-      if (!roomId) {
-        alert("No room ID provided.");
-        return;
-      }
+    console.log(ws);
 
-      ws = new WebSocket(`ws://${window.location.host}/ws?room=${roomId}`);
+    ws.onopen = () => {
+      console.log("Connected to server");
+      document.getElementById("messageInput").disabled = false;
+      document.getElementById("sendBtn").disabled = false;
+    };
 
-      ws.onopen = () => {
-        console.log("Connected to WebSocket");
-      };
+    ws.onmessage = (event) => {
+      const msgDiv = document.createElement("div");
+      msgDiv.textContent = event.data;
+      document.getElementById("messages").appendChild(msgDiv);
+    };
 
-      ws.onmessage = (event) => {
-        const chat = document.getElementById("chat");
-        const msg = document.createElement("div");
-        msg.textContent = event.data;
-        chat.appendChild(msg);
-      };
+    ws.onerror = (error) => console.error("WebSocket error ❌", error);
 
-      ws.onclose = () => {
-        console.log("Disconnected");
-      };
-    }
+    console.log(ws)
 
     function sendMessage() {
-      const messageInput = document.getElementById("message");
-      const message = messageInput.value;
-      if (ws && ws.readyState === WebSocket.OPEN) {
-        ws.send(JSON.stringify({
-          user: username,
-          message
-        }));
-        messageInput.value = '';
+      const input = document.getElementById("messageInput");
+      const msg = input.value;
+      if (msg && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ message: msg }));
+        input.value = "";
+      } else {
+        alert("WebSocket is not connected yet!");
       }
     }
 
-    connect();
+    ws.onclose = () => {
+      alert("Disconnected from server");
+    };
   </script>
 </body>
 </html>

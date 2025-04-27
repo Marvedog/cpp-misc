@@ -28,7 +28,7 @@ void ChatRoomManager::broadcast(int room_id, const std::string& message) {
     if (it != rooms_.end()) {
         // Send the message to every connected session in the room
         for (auto& session : it->second) {
-            session->send(message);
+            //session->send(message);
         }
     }
 }

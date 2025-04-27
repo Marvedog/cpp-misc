@@ -161,9 +161,22 @@ CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/routes/ws_chat.cpp -o CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.s
 
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: CMakeFiles/rest_api.dir/flags.make
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/listener.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rest_api.dir/src/ws/listener.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/ws/listener.cpp.o -c /home/bigkahuna/cpp_dev/src/ws/listener.cpp
+
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rest_api.dir/src/ws/listener.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bigkahuna/cpp_dev/src/ws/listener.cpp > CMakeFiles/rest_api.dir/src/ws/listener.cpp.i
+
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/ws/listener.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/ws/listener.cpp -o CMakeFiles/rest_api.dir/src/ws/listener.cpp.s
+
 CMakeFiles/rest_api.dir/src/ws/session.cpp.o: CMakeFiles/rest_api.dir/flags.make
 CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/session.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/ws/session.cpp.o -c /home/bigkahuna/cpp_dev/src/ws/session.cpp
 
 CMakeFiles/rest_api.dir/src/ws/session.cpp.i: cmake_force
@@ -173,6 +186,32 @@ CMakeFiles/rest_api.dir/src/ws/session.cpp.i: cmake_force
 CMakeFiles/rest_api.dir/src/ws/session.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/ws/session.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/ws/session.cpp -o CMakeFiles/rest_api.dir/src/ws/session.cpp.s
+
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: CMakeFiles/rest_api.dir/flags.make
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: ../src/ws/shared_state.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o -c /home/bigkahuna/cpp_dev/src/ws/shared_state.cpp
+
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bigkahuna/cpp_dev/src/ws/shared_state.cpp > CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.i
+
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/ws/shared_state.cpp -o CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.s
+
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: CMakeFiles/rest_api.dir/flags.make
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: ../src/ws/websocket_session.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o -c /home/bigkahuna/cpp_dev/src/ws/websocket_session.cpp
+
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/bigkahuna/cpp_dev/src/ws/websocket_session.cpp > CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.i
+
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/bigkahuna/cpp_dev/src/ws/websocket_session.cpp -o CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.s
 
 # Object files for target rest_api
 rest_api_OBJECTS = \
@@ -184,7 +223,10 @@ rest_api_OBJECTS = \
 "CMakeFiles/rest_api.dir/src/routes/health.cpp.o" \
 "CMakeFiles/rest_api.dir/src/routes/user.cpp.o" \
 "CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o" \
-"CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
+"CMakeFiles/rest_api.dir/src/ws/listener.cpp.o" \
+"CMakeFiles/rest_api.dir/src/ws/session.cpp.o" \
+"CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o" \
+"CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o"
 
 # External object files for target rest_api
 rest_api_EXTERNAL_OBJECTS =
@@ -197,14 +239,17 @@ rest_api: CMakeFiles/rest_api.dir/src/main.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/routes/health.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/routes/user.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o
+rest_api: CMakeFiles/rest_api.dir/src/ws/listener.cpp.o
 rest_api: CMakeFiles/rest_api.dir/src/ws/session.cpp.o
+rest_api: CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o
+rest_api: CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o
 rest_api: CMakeFiles/rest_api.dir/build.make
-rest_api: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0
-rest_api: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
+rest_api: /usr/lib/x86_64-linux-gnu/libboost_system.so.1.81.0
+rest_api: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.81.0
 rest_api: /usr/lib/x86_64-linux-gnu/libfmt.a
-rest_api: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.71.0
+rest_api: /usr/lib/x86_64-linux-gnu/libboost_atomic.so.1.81.0
 rest_api: CMakeFiles/rest_api.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable rest_api"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/bigkahuna/cpp_dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable rest_api"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rest_api.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

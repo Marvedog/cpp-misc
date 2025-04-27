@@ -1,97 +1,160 @@
 #include "session.hpp"
-#include "../chat_room_manager.hpp"
+#include "websocket_session.hpp"
+
+#include <boost/config.hpp>
+
+#include <nlohmann/json.hpp>
 
 #include <iostream>
 #include <string>
 #include <regex>
 
-namespace http = boost::beast::http;
-using Request = http::request<http::string_body>;
 
-// Constructor: wrap the raw TCP socket in a Beast WebSocket stream.
-WebSocketSession::WebSocketSession(boost::asio::ip::tcp::socket&& socket)
-: ws_(boost::beast::tcp_stream(std::move(socket))) {}
-
-/**
- * Starts the async WebSocket handshake.
- * 
- * 1. This is called after the TCP socket has been accepted.
- * 2. It asynchronously upgrades the connection from HTTP to WebSocket.
- * 3. Once complete, `on_accept` (in this case a lambda) is called.
- */
-void WebSocketSession::run(Request req) {
-
-    // parse room id
+// Return a response for the given request.
+//
+// The concrete type of the response message (which depends on the
+// request), is type-erased in message_generator.
+template <class Body, class Allocator>
+http::message_generator handle_request(beast::string_view doc_root, http::request<Body, http::basic_fields<Allocator>>&& req) {
     const std::string target = std::string(req.target());
 
-    std::regex re("room=[0-9]+");
+    if (target.rfind("/v1/health", 0) == 0) {
+        std::cout << "health route" << std::endl;
 
-    if (std::regex_match(target, re)) {
-        //room_id_ = target.
-    }
+        http::response<http::string_body> res{http::status::bad_request, req.version()};
+        res.set(http::field::content_type, "text/html");
+        res.keep_alive(req.keep_alive());
+        res.body() = std::string(why);
+        res.prepare_payload();
+        return res;
+        // routes::handle_health(req, res);
+    } else if (target.rfind("/v1/user", 0) == 0) {
+        std::cout << "user route" << std::endl;
 
-
-    ws_.async_accept([self = shared_from_this()](boost::beast::error_code ec) {
-        if (ec) {
-            std::cerr << "WebSocket accept error: " << ec.message() << "\n";
-            return;
+        http::response<http::string_body> res{http::status::bad_request, req.version()};
+        res.set(http::field::content_type, "text/html");
+        res.keep_alive(req.keep_alive());
+        res.body() = std::string(why);
+        res.prepare_payload();
+        return res;
+        // routes::handle_user(req, res, db_conn);
+    } else if (req.target().starts_with("/chat")) {
+        std::ifstream file("static/chat.html");
+        if (file) {
+            std::stringstream buffer;
+            buffer << file.rdbuf();
+    
+            http::response<http::string_body> res;
+            res.result(http::status::ok);
+            res.set(http::field::content_type, "text/html");
+            res.body() = buffer.str();
+            res.prepare_payload();
+            return res;
+        } else {
+            http::response<http::string_body> res{http::status::not_found, req.version()};
+            res.result(http::status::not_found);
+            res.set(http::field::content_type, "text/plain");
+            res.body() = "Chat page not found.";
+            res.prepare_payload();
+            return res;
         }
-
-        // Join room after successful handshake
-        ChatRoomManager::get_instance().join_room(self->room_id_, self);
-
-        self->do_read();
-    });
+    } else {
+        http::response<http::string_body> res{http::status::not_found, req.version()};
+        res.result(http::status::not_found);
+        res.set(http::field::content_type, "text/plain");
+        res.body() = "404 Not Found";
+        res.prepare_payload();
+        return res;
+    }
 }
 
-// Prepare the stream to send a text message (or binary)
-void WebSocketSession::send(const std::string& msg) {
-    ws_.text(true);
-    ws_.async_write(boost::asio::buffer(msg),
-        [self = shared_from_this()](boost::beast::error_code ec, std::size_t bytes) {
-            if (ec == boost::beast::websocket::error::closed) {
-                self->on_close();
-            } else {
-                self->on_write(ec, bytes);
-            }
-        });
+
+// Constructor: wrap the raw TCP socket in a Beast WebSocket stream.
+HttpSession::HttpSession(boost::asio::ip::tcp::socket&& socket, int room_id, const std::string& username, boost::shared_ptr<shared_state> const& state)
+: 
+stream_(beast::tcp_stream(std::move(socket))), 
+room_id_(room_id), 
+username_(username),
+state_(state)  // Ensure all async ops are performed on the strand
+{}
+
+void HttpSession::run() {
+    do_read();
+}
+
+void HttpSession::fail(beast::error_code ec, char const* what){
+    // Don't report on canceled operations
+    if(ec == net::error::operation_aborted)
+        return;
+
+    std::cerr << what << ": " << ec.message() << "\n";
 }
 
 /**
  * Starts an async read from the WebSocket stream.
  * This sets up a callback to `on_read` once a message is received.
  */
-void WebSocketSession::do_read() {
-    ws_.async_read(buffer_, [self = shared_from_this()](boost::beast::error_code ec, std::size_t bytes_transferred) {
-        if (ec == boost::beast::websocket::error::closed) {
-            self->on_close();
-        } else {
-            self->on_read(ec, bytes_transferred);
-        }
-    });
+void HttpSession::do_read() {
+    // Construct a new parser for each message
+    parser_.emplace();
+
+    // Apply a reasonable limit to the allowed size
+    // of the body in bytes to prevent abuse.
+    parser_->body_limit(10000);
+
+    // Set the timeout.
+    stream_.expires_after(std::chrono::seconds(30));
+
+    // Read a request
+    http::async_read(
+        stream_,
+        buffer_,
+        parser_->get(),
+        beast::bind_front_handler(
+            &HttpSession::on_read,
+            shared_from_this()));
 }
 
 
-/**
- * Callback after a message is read.
- * 
- * 1. Converts the buffer into a string.
- * 2. Logs it to console.
- * 3. Echoes it back to the sender.
- * 
- * TODO: This is where we would persist the message to the db (?)
- */
-void WebSocketSession::on_read(boost::beast::error_code ec, std::size_t) {
-    if (ec) {
-        std::cerr << "Read error: " << ec.message() << "\n";
+void HttpSession::on_read(beast::error_code ec, std::size_t){
+    // This means they closed the connection
+    if(ec == http::error::end_of_stream)
+    {
+        stream_.socket().shutdown(tcp::socket::shutdown_send, ec);
         return;
     }
 
-    std::string msg = boost::beast::buffers_to_string(buffer_.data());
-    std::cout << "Received: " << msg << "\n";
+    // Handle the error, if any
+    if(ec)
+        return fail(ec, "read");
 
-    // Broadcast to room
-    ChatRoomManager::get_instance().broadcast(room_id_, msg);
+    // See if it is a WebSocket Upgrade
+    if(websocket::is_upgrade(parser_->get()))
+    {
+        // Create a websocket session, transferring ownership
+        // of both the socket and the HTTP request.
+        boost::make_shared<websocket_session>(
+            stream_.release_socket(),
+                state_)->run(parser_->release());
+        return;
+    }
+
+    // Handle request
+    http::message_generator msg =
+        handle_request(state_->doc_root(), parser_->release());
+
+    // Determine if we should close the connection
+    bool keep_alive = msg.keep_alive();
+
+    auto self = shared_from_this();
+
+    // Send the response
+    http::async_write(
+        stream_, std::move(msg),
+        [self, keep_alive](beast::error_code ec, std::size_t bytes)
+        {
+            self->on_write(ec, bytes, keep_alive);
+        });
 }
 
 
@@ -100,16 +163,19 @@ void WebSocketSession::on_read(boost::beast::error_code ec, std::size_t) {
  * 
  * Clears the buffer and initiates another read (i.e., keep the connection alive).
  */
-void WebSocketSession::on_write(boost::beast::error_code ec, std::size_t) {
-    if (ec) {
-        std::cerr << "Write error: " << ec.message() << "\n";
+void HttpSession::on_write(beast::error_code ec, std::size_t, bool keep_alive){
+    // Handle the error, if any
+    if(ec)
+        return fail(ec, "write");
+
+    if(! keep_alive)
+    {
+        // This means we should close the connection, usually because
+        // the response indicated the "Connection: close" semantic.
+        stream_.socket().shutdown(tcp::socket::shutdown_send, ec);
         return;
     }
 
-    buffer_.consume(buffer_.size());  // Clear buffer
-    do_read();  // Wait for next message
-}
-
-void WebSocketSession::on_close() {
-    ChatRoomManager::get_instance().leave_room(room_id_, shared_from_this());
+    // Read another request
+    do_read();
 }

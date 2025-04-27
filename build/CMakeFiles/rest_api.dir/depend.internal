@@ -4,7 +4,10 @@
 CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o
  /home/bigkahuna/cpp_dev/src/chat_room_manager.cpp
  /home/bigkahuna/cpp_dev/src/chat_room_manager.hpp
+ /home/bigkahuna/cpp_dev/src/ws/beast.hpp
+ /home/bigkahuna/cpp_dev/src/ws/net.hpp
  /home/bigkahuna/cpp_dev/src/ws/session.hpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.hpp
 CMakeFiles/rest_api.dir/src/config.cpp.o
  /home/bigkahuna/cpp_dev/src/config.cpp
  /home/bigkahuna/cpp_dev/src/config.hpp
@@ -21,7 +24,11 @@ CMakeFiles/rest_api.dir/src/main.cpp.o
  /home/bigkahuna/cpp_dev/src/main.cpp
  /home/bigkahuna/cpp_dev/src/routes/health.hpp
  /home/bigkahuna/cpp_dev/src/routes/user.hpp
+ /home/bigkahuna/cpp_dev/src/ws/beast.hpp
+ /home/bigkahuna/cpp_dev/src/ws/listener.hpp
+ /home/bigkahuna/cpp_dev/src/ws/net.hpp
  /home/bigkahuna/cpp_dev/src/ws/session.hpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.hpp
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o
  /home/bigkahuna/cpp_dev/src/routes/health.cpp
  /home/bigkahuna/cpp_dev/src/routes/health.hpp
@@ -33,7 +40,29 @@ CMakeFiles/rest_api.dir/src/routes/user.cpp.o
 CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o
  /home/bigkahuna/cpp_dev/src/routes/ws_chat.cpp
  /home/bigkahuna/cpp_dev/src/routes/ws_chat.hpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o
+ /home/bigkahuna/cpp_dev/src/ws/beast.hpp
+ /home/bigkahuna/cpp_dev/src/ws/listener.cpp
+ /home/bigkahuna/cpp_dev/src/ws/listener.hpp
+ /home/bigkahuna/cpp_dev/src/ws/net.hpp
+ /home/bigkahuna/cpp_dev/src/ws/session.hpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.hpp
 CMakeFiles/rest_api.dir/src/ws/session.cpp.o
- /home/bigkahuna/cpp_dev/src/chat_room_manager.hpp
+ /home/bigkahuna/cpp_dev/src/ws/beast.hpp
+ /home/bigkahuna/cpp_dev/src/ws/net.hpp
  /home/bigkahuna/cpp_dev/src/ws/session.cpp
  /home/bigkahuna/cpp_dev/src/ws/session.hpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.hpp
+ /home/bigkahuna/cpp_dev/src/ws/websocket_session.hpp
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o
+ /home/bigkahuna/cpp_dev/src/ws/beast.hpp
+ /home/bigkahuna/cpp_dev/src/ws/net.hpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.cpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.hpp
+ /home/bigkahuna/cpp_dev/src/ws/websocket_session.hpp
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o
+ /home/bigkahuna/cpp_dev/src/ws/beast.hpp
+ /home/bigkahuna/cpp_dev/src/ws/net.hpp
+ /home/bigkahuna/cpp_dev/src/ws/shared_state.hpp
+ /home/bigkahuna/cpp_dev/src/ws/websocket_session.cpp
+ /home/bigkahuna/cpp_dev/src/ws/websocket_session.hpp

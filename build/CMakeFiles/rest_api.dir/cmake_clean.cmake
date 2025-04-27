@@ -7,7 +7,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/rest_api.dir/src/routes/health.cpp.o"
   "CMakeFiles/rest_api.dir/src/routes/user.cpp.o"
   "CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o"
+  "CMakeFiles/rest_api.dir/src/ws/listener.cpp.o"
   "CMakeFiles/rest_api.dir/src/ws/session.cpp.o"
+  "CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o"
+  "CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o"
   "rest_api"
   "rest_api.pdb"
 )

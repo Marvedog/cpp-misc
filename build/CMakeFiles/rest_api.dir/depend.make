@@ -3,7 +3,10 @@
 
 CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o: ../src/chat_room_manager.cpp
 CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o: ../src/chat_room_manager.hpp
+CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o: ../src/ws/beast.hpp
+CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o: ../src/ws/net.hpp
 CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o: ../src/ws/session.hpp
+CMakeFiles/rest_api.dir/src/chat_room_manager.cpp.o: ../src/ws/shared_state.hpp
 
 CMakeFiles/rest_api.dir/src/config.cpp.o: ../src/config.cpp
 CMakeFiles/rest_api.dir/src/config.cpp.o: ../src/config.hpp
@@ -20,7 +23,11 @@ CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/config.hpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/main.cpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/routes/health.hpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/routes/user.hpp
+CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/ws/beast.hpp
+CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/ws/listener.hpp
+CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/ws/net.hpp
 CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/ws/session.hpp
+CMakeFiles/rest_api.dir/src/main.cpp.o: ../src/ws/shared_state.hpp
 
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o: ../src/routes/health.cpp
 CMakeFiles/rest_api.dir/src/routes/health.cpp.o: ../src/routes/health.hpp
@@ -33,7 +40,29 @@ CMakeFiles/rest_api.dir/src/routes/user.cpp.o: ../src/routes/user.hpp
 CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o: ../src/routes/ws_chat.cpp
 CMakeFiles/rest_api.dir/src/routes/ws_chat.cpp.o: ../src/routes/ws_chat.hpp
 
-CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/chat_room_manager.hpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/beast.hpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/listener.cpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/listener.hpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/net.hpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/session.hpp
+CMakeFiles/rest_api.dir/src/ws/listener.cpp.o: ../src/ws/shared_state.hpp
+
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/beast.hpp
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/net.hpp
 CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/session.cpp
 CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/session.hpp
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/shared_state.hpp
+CMakeFiles/rest_api.dir/src/ws/session.cpp.o: ../src/ws/websocket_session.hpp
+
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: ../src/ws/beast.hpp
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: ../src/ws/net.hpp
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: ../src/ws/shared_state.cpp
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: ../src/ws/shared_state.hpp
+CMakeFiles/rest_api.dir/src/ws/shared_state.cpp.o: ../src/ws/websocket_session.hpp
+
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: ../src/ws/beast.hpp
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: ../src/ws/net.hpp
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: ../src/ws/shared_state.hpp
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: ../src/ws/websocket_session.cpp
+CMakeFiles/rest_api.dir/src/ws/websocket_session.cpp.o: ../src/ws/websocket_session.hpp
 
